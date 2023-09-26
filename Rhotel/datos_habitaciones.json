@@ -1,0 +1,383 @@
+[
+    
+    {
+        "model": "reservas.habitacion",
+        "pk": 1,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 1,
+            "numero": "101",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 2,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 1,
+            "numero": "102",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 3,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 1,
+            "numero": "103",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 4,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 1,
+            "numero": "104",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 5,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 1,
+            "numero": "105",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 6,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 1,
+            "numero": "106",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 7,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 1,
+            "numero": "201",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 8,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 1,
+            "numero": "202",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 9,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 1,
+            "numero": "203",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 10,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 1,
+            "numero": "204",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 11,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 1,
+            "numero": "205",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 38,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 1,
+            "numero": "206",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 12,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 1,
+            "numero": "301",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 13,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 1,
+            "numero": "302",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 14,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 1,
+            "numero": "303",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 15,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 1,
+            "numero": "304",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 16,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 1,
+            "numero": "305",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 17,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 1,
+            "numero": "306",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 18,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 1,
+            "numero": "401",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 19,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 1,
+            "numero": "402",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 20,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 1,
+            "numero": "403",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 21,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 1,
+            "numero": "404",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 22,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 1,
+            "numero": "405",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 23,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 1,
+            "numero": "406",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 24,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 1,
+            "numero": "501",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 25,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 1,
+            "numero": "502",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 26,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 1,
+            "numero": "503",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 27,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 1,
+            "numero": "504",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 28,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 1,
+            "numero": "505",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 29,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 1,
+            "numero": "506",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 20,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 2,
+            "numero": "601",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 31,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 2,
+            "numero": "602",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 32,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 2,
+            "numero": "603",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 33,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 2,
+            "numero": "604",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 34,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 2,
+            "numero": "701",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 35,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 2,
+            "numero": "702",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 36,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 2,
+            "numero": "703",
+            "disponible": true
+        }
+    },
+    {
+        "model": "reservas.habitacion",
+        "pk": 37,
+        "fields": {
+            "hotel": 1,
+            "tipo_habitacion": 2,
+            "numero": "704",
+            "disponible": true
+        }
+    }
+]
