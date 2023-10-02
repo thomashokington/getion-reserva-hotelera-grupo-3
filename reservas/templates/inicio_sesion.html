@@ -1,10 +1,35 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2>Iniciar Sesión</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Iniciar Sesión</button>
-  </form>
+<div class="container-fluid">
+    
+
+    <div class="row justify-content-md-center">
+        
+        <div class="col-md-6 bg-light">
+            <a href="javascript:history.go(-1);" class="btn btn-secondary mt-2"><</a>
+            <div class="bg-light py-4 px-3 text-center">
+                <h1>Iniciar Sesión</h1>
+                <form method="post" class="form-signin">
+                    {% csrf_token %}
+                    <label for="{{ form.username.id_for_label }}" class="sr-only"></label>
+                    {{ form.username.label_tag }}
+                    {{ form.username }}
+                    {{ form.username.errors }}
+                    <br>
+                    <br>
+                    <label for="{{ form.password.id_for_label }}" class=" sr-only"></label>
+                    {{ form.password.label_tag }}
+                    {{ form.password }}
+                    {{ form.password.errors }}
+                    <br>
+                    
+
+                    <button class="btn mt-3 btn-primary btn-block" type="submit">Iniciar Sesión</button>
+                </form>
+                <p>¿No tienes una cuenta? <a href="{% url 'registro' %}" class="btn btn-link">Regístrate aquí</a></p>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -1,48 +1,50 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container-fluid ">
-    <a href="javascript:history.go(-1);" class="btn btn-secondary mt-2">Retroceder</a>
-  
-  </div>
-  <div class="row justify-content-md-center">
-    <div class="col-md-6">
-      <div class="bg-light py-4 px-3 text-center">
-        <i class="bi bi-arrow-left-short"></i>
-        <h1>Registrate</h1>
-            <form method="post">
-                {% csrf_token %}
+<div class="container-fluid">
+    
+
+    <div class="row justify-content-md-center">
+        
+        <div class="col-md-6 bg-light">
+            <a href="javascript:history.go(-1);" class="btn btn-secondary mt-2"><</a>
+            <div class="bg-light py-4 px-3 text-center">
+                <h1>Registrate</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    {{ form.username.label_tag }}
+                    {{ form.username }}
+                    {{ form.username.errors }}
                 
-                <{{ form.username.label_tag }}
-                {{ form.username }}
-                {{ form.username.errors }}>
-            
-                {{ form.correo.label_tag }}
-                {{ form.correo }}
-                {{ form.correo.errors }}
-            
-                {{ form.nombre.label_tag }}
-                {{ form.nombre }}
-                {{ form.nombre.errors }}
-            
-                {{ form.apellido.label_tag }}
-                {{ form.apellido }}
-                {{ form.apellido.errors }}
-            
-                {{ form.password1.label_tag }}
-                {{ form.password1 }}
-                {% if form.errors.password1 %}
-                <div class="alert alert-danger">
-                    {{ form.errors.password1 }}
-                </div>
-                {% endif %}
-            
-                {{ form.password2.label_tag }}
-                {{ form.password2 }}
-                {{ form.password2.errors }}
+                    {{ form.correo.label_tag }}
+                    {{ form.correo }}
+                    {{ form.correo.errors }}
                 
-                <button class="btn btn-primary" type="submit">Registrarse</button>
-            </form>
+                    {{ form.nombre.label_tag }}
+                    {{ form.nombre }}
+                    {{ form.nombre.errors }}
+                
+                    {{ form.apellido.label_tag }}
+                    {{ form.apellido }}
+                    {{ form.apellido.errors }}
+                
+                    {{ form.password1.label_tag }}
+                    {{ form.password1 }}
+                    {% if form.errors.password1 %}
+                    <div class="alert alert-danger">
+                        {{ form.errors.password1 }}
+                    </div>
+                    {% endif %}
+                
+                    {{ form.password2.label_tag }}
+                    {{ form.password2 }}
+                    {{ form.password2.errors }}
+                    
+                    <button class="btn btn-primary" type="submit">Registrarse</button>
+                </form>
+                <p>¿Ya tienes una cuenta? <a href="{% url 'inicio_sesion' %}" class="btn btn-link">Inicia sesión aquí</a></p>
+            </div>
         </div>
     </div>
 </div>
