@@ -18,6 +18,9 @@ class TipoDeHabitacion(models.Model):
     precio_base = models.DecimalField(max_digits=10, decimal_places=2)
     capacidad = models.IntegerField()
 
+    def __str__(self):
+        return self.nombre
+
     # ...
 
 class Habitacion(models.Model):
@@ -27,6 +30,8 @@ class Habitacion(models.Model):
     # Elimina los campos fecha_disponible_inicio y fecha_disponible_fin
     disponible = models.BooleanField(default=True)  # Cambia esto a un campo booleano para disponibilidad
 
+    def __str__(self):
+        return self.numero
     # ...
 
 
