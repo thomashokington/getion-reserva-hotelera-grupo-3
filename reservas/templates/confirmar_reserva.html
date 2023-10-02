@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Confirmar Reserva</title>
-</head>
-<body>
-    <h1>Reserva confirmada</h1>
-    <p>Has realizado una reserva para la habitación {{ reserva.habitacion.numero }}.</p>
-    <p>Monto a pagar: ${{ reserva.monto_pagar }}</p>
-    <!-- Agrega aquí un formulario de pago o confirmación adicional -->
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+<h1>Reserva Confirmada</h1>
+    <p><strong>Número de Habitación:</strong> {{ reserva.habitacion.numero }}</p>
+    <p><strong>Fecha de Entrada:</strong> {{ reserva.fecha_entrada }}</p>
+    <p><strong>Fecha de Salida:</strong> {{ reserva.fecha_salida }}</p>
+    <p><strong>Nombre del Cliente:</strong> {{ reserva.nombre }}</p>
+    <p><strong>Precio Total:</strong> {{ reserva.precio_total }}</p>
+
+{% endblock %}

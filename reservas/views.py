@@ -1,6 +1,6 @@
 
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,  get_object_or_404
 from .models import Habitacion, Reserva, TipoDeHabitacion
 from reservas.forms import BusquedaHabitacionForm, CrearReservaForm
 from django.db.models import Q
@@ -11,8 +11,8 @@ from django.shortcuts import redirect
 
 
 
-def crear_reserva(request, habitacion_id):
-    habitacion = Habitacion.objects.get(id=habitacion_id)
+def crear_reserva(request, numero_habitacion):
+    habitacion = get_object_or_404(Habitacion, numero=numero_habitacion)
 
     if request.method == 'POST':
         form = CrearReservaForm(request.POST)
@@ -28,12 +28,17 @@ def crear_reserva(request, habitacion_id):
             # Guardar la reserva
             reserva.save()
 
-            # Aquí puedes redirigir a una página de pago o confirmación de reserva
-            return redirect('confirmar_reserva', reserva.id)
+            # Redirigir a la vista de confirmación de reserva
+            return redirect('confirmar_reserva', reserva_id=reserva.id)
     else:
-        form = CrearReservaForm()
+        form = CrearReservaForm()  # Inicializa el formulario incluso en el caso de una solicitud GET
 
     return render(request, 'crear_reserva.html', {'form': form, 'habitacion': habitacion})
+
+def confirmar_reserva(request, reserva_id):
+    reserva = get_object_or_404(Reserva, id=reserva_id)
+    return render(request, 'confirmar_reserva.html', {'reserva': reserva})
+
 def detalle_reserva(request, reserva_id):
     reserva = Reserva.objects.get(id=reserva_id)
     return render(request, 'detalle_reserva.html', {'reserva': reserva})

@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Crear Reserva</title>
-</head>
-<body>
-    <h1>Crear Reserva</h1>
+{% extends "base.html" %}
+{% block content %}
+    <h1>Crear Reserva para la Habitación {{ habitacion.numero }}</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
+        <input type="hidden" name="numero_habitacion" value="{{ habitacion.numero }}">
         <input type="submit" value="Reservar">
     </form>
-</body>
-</html>
+{% endblock %}
