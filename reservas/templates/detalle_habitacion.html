@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Detalles de la Habitación {{ habitacion.numero }}</h1>
+  <p><strong>Capacidad:</strong> {{ habitacion.tipo_habitacion.capacidad }} personas</p>
+  <p><strong>Tipo:</strong> {{ habitacion.tipo_habitacion.nombre }}</p>
+  <p><strong>Fecha de Disponibilidad:</strong> {{ habitacion.tipo_habitacion.fecha_disponible|default:"Disponible en la fecha indicada" }}</p>
+  
+  <!-- Agregar más detalles de la habitación aquí si es necesario -->
+
+  <a href="{% url 'crear_reserva' numero_habitacion=habitacion.numero %}" class="btn btn-primary">Reservar</a>
+{% endblock %}

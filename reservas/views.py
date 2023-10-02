@@ -90,6 +90,11 @@ def buscar_habitaciones(request):
         form = BusquedaHabitacionForm()
 
     return render(request, 'buscar_habitaciones.html', {'form': form})
+
 def homepage(request):
     
     return redirect('reservas/buscar_habitaciones/')
+
+def detalle_habitacion(request, numero_habitacion):
+    habitacion = Habitacion.objects.get(numero=numero_habitacion)
+    return render(request, 'detalle_habitacion.html', {'habitacion': habitacion})
