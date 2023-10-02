@@ -2,26 +2,20 @@
 
 {% block content %}
   <h1>Resultados de la Búsqueda</h1>
-  <div class="row">
-    {% if habitaciones %}
+  {% if habitaciones %}
+    <ul>
       {% for habitacion in habitaciones %}
-        <div class="col-md-4 mb-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Habitación {{ habitacion.numero }}</h5>
-              <p class="card-text">
-                <strong>Capacidad:</strong> {{ habitacion.tipo_habitacion.capacidad }} personas<br>
-                <strong>Tipo:</strong> {{ habitacion.tipo_habitacion.nombre }}<br>
-                <strong>Fecha de Disponibilidad:</strong> {{ habitacion.tipo_habitacion.fecha_disponible|default:"Disponible" }}<br>
-                
-              </p>
-              <a href="{% url 'detalle_habitacion' numero_habitacion=habitacion.numero %}" class="btn btn-primary">Detalles</a>
-            </div>
-          </div>
-        </div>
+        <li>
+          <strong>Número:</strong> {{ habitacion.numero }}<br>
+          <strong>Capacidad:</strong> {{ habitacion.tipo_habitacion.capacidad }} personas<br>
+          <strong>Tipo:</strong> {{ habitacion.tipo_habitacion.nombre }}<br>
+          <strong>Fecha de Disponibilidad:</strong> {{ habitacion.tipo_habitacion.fecha_disponible|default:"No especificada" }}<br>
+          <!-- Agrega más detalles de la habitación aquí si es necesario -->
+          <a href="{% url 'crear_reserva' habitacion.id %}">Reservar</a>
+        </li>
       {% endfor %}
-    {% else %}
-      <p class="col-md-12">No se encontraron habitaciones disponibles con los criterios de búsqueda seleccionados.</p>
-    {% endif %}
-  </div>
+    </ul>
+  {% else %}
+    <p>No se encontraron habitaciones disponibles con los criterios de búsqueda seleccionados.</p>
+  {% endif %}
 {% endblock %}

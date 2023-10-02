@@ -1,22 +1,26 @@
 
+<<<<<<< HEAD
+<h1 class="text-2xl font-bold text-blue-700 mb-2">
+  Buscar Habitaciones Disponibles
+</h1>
+<form method="post">
+  {% csrf_token %} {{ form.as_p }}
+  <button
+    class="bg-blue-700 mt-4 text-xl text-white px-6 py-2 rounded hover:bg-blue-900"
+    type="submit"
+  >
+    Buscar
+  </button>
+</form>
+=======
 {% extends "base.html" %}
+>>>>>>> parent of 97322fc (componentesfrontend)
 
-{% load static %}
 {% block content %}
-<div class="container-fluid ">
-  <a href="#" class="btn btn-secondary mt-2">Retroceder</a>
-</div>
-<div class="row justify-content-md-center">
-  <div class="col-md-6">
-    <div class="bg-light py-4 px-3 text-center">
-      <h1>Buscar Habitaciones Disponibles</h1>
-      <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Buscar Disponiblidad</button>
-      </form>
-    </div>
-  </div>
-</div>
-  
+  <h1>Buscar Habitaciones Disponibles</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Buscar</button>
+  </form>
 {% endblock %}
