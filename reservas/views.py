@@ -36,7 +36,6 @@ def inicio_sesion(request):  # Cambia el nombre de la vista a 'inicio_sesion'
 
 # ...
 
-@login_required
 def crear_reserva(request, numero_habitacion):
     habitacion = get_object_or_404(Habitacion, numero=numero_habitacion)
 
@@ -45,7 +44,10 @@ def crear_reserva(request, numero_habitacion):
         if form.is_valid():
             reserva = form.save(commit=False)
             reserva.habitacion = habitacion
-            reserva.cliente = request.user  # Asigna el cliente actual (usuario autenticado)
+
+            # Asigna el cliente actual (usuario autenticado)
+            reserva.cliente = request.user
+
             reserva.precio_total = calcular_precio_total(reserva.fecha_entrada, reserva.fecha_salida, habitacion.precio_base)
 
             # Calcular el monto a pagar (30% del precio total)
@@ -58,10 +60,10 @@ def crear_reserva(request, numero_habitacion):
             # Redirigir a la vista de confirmación de reserva
             return redirect('confirmar_reserva', reserva_id=reserva.id)
     else:
-        form = CrearReservaForm(initial={'cliente': request.user})  # Inicializa con el cliente actual
+        # Inicializa el formulario sin mostrar el campo cliente
+        form = CrearReservaForm(initial={'cliente': request.user})
 
     return render(request, 'crear_reserva.html', {'form': form, 'habitacion': habitacion})
-
 
 def confirmar_reserva(request, reserva_id):
     reserva = get_object_or_404(Reserva, id=reserva_id)
