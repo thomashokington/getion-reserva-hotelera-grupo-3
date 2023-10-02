@@ -36,6 +36,7 @@ def inicio_sesion(request):  # Cambia el nombre de la vista a 'inicio_sesion'
 
 # ...
 
+@login_required
 def crear_reserva(request, numero_habitacion):
     habitacion = get_object_or_404(Habitacion, numero=numero_habitacion)
 
@@ -60,8 +61,8 @@ def crear_reserva(request, numero_habitacion):
             # Redirigir a la vista de confirmación de reserva
             return redirect('confirmar_reserva', reserva_id=reserva.id)
     else:
-        # Inicializa el formulario sin mostrar el campo cliente
-        form = CrearReservaForm(initial={'cliente': request.user})
+        # Inicializa el formulario y prellena el campo 'numero_habitacion'
+        form = CrearReservaForm(initial={'cliente': request.user, 'numero_habitacion': numero_habitacion})
 
     return render(request, 'crear_reserva.html', {'form': form, 'habitacion': habitacion})
 
