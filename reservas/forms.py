@@ -8,11 +8,12 @@ class BusquedaHabitacionForm(forms.Form):
     tipo_habitacion = forms.ModelChoiceField(
         queryset=TipoDeHabitacion.objects.all(),
         empty_label="Cualquier tipo",
-        required=False
+        required=False,
+        widget=forms.Select(attrs={'class': 'form-control'}),
     )
-    fecha_entrada = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
-    fecha_salida = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
-    capacidad = forms.IntegerField(min_value=1, label='Capacidad mínima')
+    fecha_entrada = forms.DateField(widget=forms.DateInput(attrs={'type': 'date', 'class': 'form-control'})) 
+    fecha_salida = forms.DateField(widget=forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}))
+    capacidad = forms.IntegerField(min_value=1, label='Capacidad mínima', widget=forms.TextInput(attrs={'class': 'form-control'}))
 
 class CrearReservaForm(forms.ModelForm):
     class Meta:
