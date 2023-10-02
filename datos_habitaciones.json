@@ -1,4 +1,34 @@
 [
+    {
+        "model": "reservas.hotel",
+        "pk": 1,
+        "fields": {
+            "nombre": "Hotel Pacific Reef",
+            "ubicacion": "Ubicación Ejemplo",
+            "descripcion": "Descripción del hotel",
+            "estrellas": 4
+        }
+    },
+    {
+        "model": "reservas.tipodehabitacion",
+        "pk": 1,
+        "fields": {
+            "nombre": "Turista",
+            "descripcion": "Descripción de habitación turista",
+            "precio_base": 35000.00,
+            "capacidad": 2
+        }
+    },
+    {
+        "model": "reservas.tipodehabitacion",
+        "pk": 2,
+        "fields": {
+            "nombre": "Premium",
+            "descripcion": "Descripción de habitación premium",
+            "precio_base": 45000.00,
+            "capacidad": 4
+        }
+    },
     
     {
         "model": "reservas.habitacion",

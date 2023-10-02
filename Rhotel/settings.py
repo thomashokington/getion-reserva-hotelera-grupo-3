@@ -77,11 +77,11 @@ WSGI_APPLICATION = 'Rhotel.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Reserva_hotel',
-        'USER': 'Admin_reserva',
-        'PASSWORD': 'duoc123',
-        'HOST': 'localhost',
-        'PORT' : '',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'FgyKFx2Q30qC81KILGUy',
+        'HOST': 'containers-us-west-62.railway.app',
+        'PORT' : '6125',
     }
 }
 
