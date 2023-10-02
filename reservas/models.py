@@ -3,12 +3,16 @@
 from django.db import models
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
+from django.contrib.auth.models import User
 
 class Hotel(models.Model):
     nombre = models.CharField(max_length=255)
     ubicacion = models.CharField(max_length=255)
     descripcion = models.TextField()
     estrellas = models.IntegerField()
+
+    def __str__(self):
+        return self.nombre
 
     # ...
 
@@ -45,7 +49,7 @@ class Cliente(models.Model):
 
     # ...
 class Reserva(models.Model):
-    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    cliente = models.ForeignKey(User, on_delete=models.CASCADE)
     habitacion = models.ForeignKey(Habitacion, on_delete=models.CASCADE)
     fecha_entrada = models.DateField()
     fecha_salida = models.DateField()

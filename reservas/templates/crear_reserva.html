@@ -1,29 +1,10 @@
-<<<<<<< HEAD
-{% extends "base.html" %} {% block content %}
-<h1 class="text-2xl font-bold text-blue-700 mb-2">Crear Reserva</h1>
-<form class="flex flex-col gap-2" method="post">
-  {% csrf_token %} {{ form.as_p }}
-  <input
-    class="bg-blue-700 mt-4 text-xl text-white px-6 py-2 rounded hover:bg-blue-900"
-    type="submit"
-    value="Reservar"
-  />
-</form>
-{% endblock %}
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Crear Reserva</title>
-</head>
-<body>
-    <h1>Crear Reserva</h1>
+{% extends "base.html" %}
+{% block content %}
+    <h1>Crear Reserva para la Habitación {{ habitacion.numero }}</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
+        <input type="hidden" name="numero_habitacion" value="{{ habitacion.numero }}">
         <input type="submit" value="Reservar">
     </form>
-</body>
-</html>
->>>>>>> parent of 97322fc (componentesfrontend)
+{% endblock %}

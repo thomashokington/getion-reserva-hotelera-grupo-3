@@ -3,6 +3,8 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from .models import TipoDeHabitacion, Habitacion, Reserva
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 class BusquedaHabitacionForm(forms.Form):
     tipo_habitacion = forms.ModelChoiceField(
@@ -16,9 +18,11 @@ class BusquedaHabitacionForm(forms.Form):
     capacidad = forms.IntegerField(min_value=1, label='Capacidad mínima', widget=forms.TextInput(attrs={'class': 'form-control'}))
 
 class CrearReservaForm(forms.ModelForm):
+
     class Meta:
         model = Reserva
         fields = ['cliente', 'habitacion', 'fecha_entrada', 'fecha_salida']
+        
     
     def clean(self):
         cleaned_data = super().clean()
@@ -30,6 +34,26 @@ class CrearReservaForm(forms.ModelForm):
             if fecha_entrada >= fecha_salida:
                 raise ValidationError('La fecha de entrada debe ser anterior a la fecha de salida.')
 
-            # Agrega más validaciones según tus necesidades
+            
 
         return cleaned_data
+    
+class CustomUserCreationForm(UserCreationForm):
+    correo = forms.EmailField(required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    nombre = forms.CharField(max_length=30, required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    apellido = forms.CharField(max_length=30, required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+
+    class Meta:
+        model = User
+        fields = ['username', 'password1', 'password2', 'correo', 'nombre', 'apellido']
+        widgets = {
+            'username': forms.TextInput(attrs={'class': 'form-control'}),
+            'password1': forms.PasswordInput(attrs={'class': 'form-control'}),
+            'password2': forms.PasswordInput(attrs={'class': 'form-control'}),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Elimina los mensajes de ayuda para las contraseñas
+        self.fields['password1'].help_text = ''
+        self.fields['password2'].help_text = ''

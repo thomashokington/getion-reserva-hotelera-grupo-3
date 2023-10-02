@@ -7,10 +7,36 @@ from django.db.models import Q
 from django.db.models import F
 from .utils import calcular_precio_total
 from django.shortcuts import redirect
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.decorators import login_required
+from .forms import CustomUserCreationForm
 
+def registro(request):
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)  # Usa el formulario personalizado
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('inicio_sesion')
+    else:
+        form = CustomUserCreationForm()  # Usa el formulario personalizado
+    return render(request, 'registro.html', {'form': form})
 
+def inicio_sesion(request):  # Cambia el nombre de la vista a 'inicio_sesion'
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('buscar_habitaciones')
+    else:
+        form = AuthenticationForm()
+    return render(request, 'inicio_sesion.html', {'form': form})
 
+# ...
 
+@login_required
 def crear_reserva(request, numero_habitacion):
     habitacion = get_object_or_404(Habitacion, numero=numero_habitacion)
 
@@ -19,6 +45,7 @@ def crear_reserva(request, numero_habitacion):
         if form.is_valid():
             reserva = form.save(commit=False)
             reserva.habitacion = habitacion
+            reserva.cliente = request.user  # Asigna el cliente actual (usuario autenticado)
             reserva.precio_total = calcular_precio_total(reserva.fecha_entrada, reserva.fecha_salida, habitacion.precio_base)
 
             # Calcular el monto a pagar (30% del precio total)
@@ -31,9 +58,10 @@ def crear_reserva(request, numero_habitacion):
             # Redirigir a la vista de confirmación de reserva
             return redirect('confirmar_reserva', reserva_id=reserva.id)
     else:
-        form = CrearReservaForm()  # Inicializa el formulario incluso en el caso de una solicitud GET
+        form = CrearReservaForm(initial={'cliente': request.user})  # Inicializa con el cliente actual
 
     return render(request, 'crear_reserva.html', {'form': form, 'habitacion': habitacion})
+
 
 def confirmar_reserva(request, reserva_id):
     reserva = get_object_or_404(Reserva, id=reserva_id)
@@ -42,9 +70,6 @@ def confirmar_reserva(request, reserva_id):
 def detalle_reserva(request, reserva_id):
     reserva = Reserva.objects.get(id=reserva_id)
     return render(request, 'detalle_reserva.html', {'reserva': reserva})
-
-
-
 
 def buscar_habitaciones(request):
     if request.method == 'POST':
@@ -98,7 +123,7 @@ def buscar_habitaciones(request):
 
 def homepage(request):
     
-    return redirect('reservas/buscar_habitaciones/')
+    return redirect('registro')
 
 def detalle_habitacion(request, numero_habitacion):
     habitacion = Habitacion.objects.get(numero=numero_habitacion)
