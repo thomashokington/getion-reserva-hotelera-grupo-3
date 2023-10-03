@@ -11,6 +11,8 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from .forms import CustomUserCreationForm
+from decimal import Decimal
+
 
 def registro(request):
     if request.method == 'POST':
@@ -37,9 +39,9 @@ def inicio_sesion(request):  # Cambia el nombre de la vista a 'inicio_sesion'
 # ...
 
 @login_required
-def crear_reserva(request, numero_habitacion):
+def crear_reserva(request, id_habitacion):
     print(request.user)
-    habitacion = get_object_or_404(Habitacion, numero=numero_habitacion)
+    habitacion = get_object_or_404(Habitacion, id=id_habitacion)
 
     if request.method == 'POST':
         form = CrearReservaForm(request.POST)
@@ -50,26 +52,22 @@ def crear_reserva(request, numero_habitacion):
             # Asigna el cliente actual (usuario autenticado)
             reserva.cliente = request.user
 
-            reserva.precio_total = calcular_precio_total(reserva.fecha_entrada, reserva.fecha_salida, habitacion.precio_base)
+            reserva.precio_total = calcular_precio_total(reserva.fecha_entrada, reserva.fecha_salida, habitacion.tipo_habitacion.precio_base)
 
             # Calcular el monto a pagar (30% del precio total)
-            monto_pagar = reserva.precio_total * 0.3
+            monto_pagar = reserva.precio_total * Decimal('0.3')
             reserva.monto_pagar = monto_pagar
 
             # Guardar la reserva
             reserva.save()
 
             # Redirigir a la vista de confirmación de reserva
-            return redirect('confirmar_reserva', reserva_id=reserva.id)
+            return redirect('detalle_reserva', reserva_id=reserva.id)
     else:
-        # Inicializa el formulario y prellena el campo 'numero_habitacion'
-        form = CrearReservaForm(initial={'cliente': request.user, 'numero_habitacion': numero_habitacion})
+        # Inicializa el formulario y prellena el campo 'id_habitacion'
+        form = CrearReservaForm(initial={'cliente': request.user, 'id_habitacion': id_habitacion})
 
     return render(request, 'crear_reserva.html', {'form': form, 'habitacion': habitacion})
-
-def confirmar_reserva(request, reserva_id):
-    reserva = get_object_or_404(Reserva, id=reserva_id)
-    return render(request, 'confirmar_reserva.html', {'reserva': reserva})
 
 def detalle_reserva(request, reserva_id):
     reserva = Reserva.objects.get(id=reserva_id)
@@ -129,6 +127,6 @@ def homepage(request):
     
     return redirect('registro')
 
-def detalle_habitacion(request, numero_habitacion):
-    habitacion = Habitacion.objects.get(numero=numero_habitacion)
+def detalle_habitacion(request, id_habitacion):
+    habitacion = Habitacion.objects.get(id=id_habitacion)
     return render(request, 'detalle_habitacion.html', {'habitacion': habitacion})

@@ -15,7 +15,7 @@
                 <strong>Fecha de Disponibilidad:</strong> {{ habitacion.tipo_habitacion.fecha_disponible|default:"Disponible" }}<br>
                 
               </p>
-              <a href="{% url 'detalle_habitacion' numero_habitacion=habitacion.numero %}" class="btn btn-primary">Detalles</a>
+              <a href="{% url 'detalle_habitacion' id_habitacion=habitacion.id %}" class="btn btn-primary">Detalles</a>
             </div>
           </div>
         </div>

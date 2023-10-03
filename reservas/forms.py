@@ -21,19 +21,11 @@ class CrearReservaForm(forms.ModelForm):
     class Meta:
         model = Reserva
         fields = ['habitacion', 'fecha_entrada', 'fecha_salida']
-
-    cliente = forms.ModelChoiceField(
-        queryset=User.objects.none(),
-        widget=forms.HiddenInput()
-    )
-
-    fecha_entrada = forms.DateField(
-        widget=forms.DateInput(attrs={'type': 'date'})
-    )
-
-    fecha_salida = forms.DateField(
-        widget=forms.DateInput(attrs={'type': 'date'})
-    )
+        widgets = {
+            'habitacion': forms.HiddenInput(),
+            'fecha_entrada': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+            'fecha_salida': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+        }
 
     def clean(self):
         cleaned_data = super().clean()

@@ -3,8 +3,9 @@
     <h1>Crear Reserva para la Habitación {{ habitacion.numero }}</h1>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="hidden" name="numero_habitacion" value="{{ habitacion.numero }}">
+        {{ form.fecha_entrada.label_tag }} {{ form.fecha_entrada }}
+        {{ form.fecha_salida.label_tag }} {{ form.fecha_salida }}
+        <input type="hidden" name="id_habitacion" value="{{ habitacion.id }}">
         <input type="submit" value="Reservar">
     </form>
 {% endblock %}
