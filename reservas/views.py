@@ -38,6 +38,7 @@ def inicio_sesion(request):  # Cambia el nombre de la vista a 'inicio_sesion'
 
 @login_required
 def crear_reserva(request, numero_habitacion):
+    print(request.user)
     habitacion = get_object_or_404(Habitacion, numero=numero_habitacion)
 
     if request.method == 'POST':

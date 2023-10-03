@@ -18,17 +18,23 @@ class BusquedaHabitacionForm(forms.Form):
     capacidad = forms.IntegerField(min_value=1, label='Capacidad mínima', widget=forms.TextInput(attrs={'class': 'form-control'}))
 
 class CrearReservaForm(forms.ModelForm):
-
     class Meta:
         model = Reserva
-        fields = [ 'habitacion', 'fecha_entrada', 'fecha_salida']
+        fields = ['habitacion', 'fecha_entrada', 'fecha_salida']
 
     cliente = forms.ModelChoiceField(
-    queryset=User.objects.none(),
-    widget=forms.HiddenInput()
+        queryset=User.objects.none(),
+        widget=forms.HiddenInput()
     )
-        
-    
+
+    fecha_entrada = forms.DateField(
+        widget=forms.DateInput(attrs={'type': 'date'})
+    )
+
+    fecha_salida = forms.DateField(
+        widget=forms.DateInput(attrs={'type': 'date'})
+    )
+
     def clean(self):
         cleaned_data = super().clean()
         fecha_entrada = cleaned_data.get('fecha_entrada')
@@ -37,9 +43,7 @@ class CrearReservaForm(forms.ModelForm):
 
         if fecha_entrada and fecha_salida and habitacion:
             if fecha_entrada >= fecha_salida:
-                raise ValidationError('La fecha de entrada debe ser anterior a la fecha de salida.')
-
-            
+                raise forms.ValidationError('La fecha de entrada debe ser anterior a la fecha de salida.')
 
         return cleaned_data
     
