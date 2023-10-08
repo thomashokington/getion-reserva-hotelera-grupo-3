@@ -30,7 +30,7 @@ class TipoDeHabitacion(models.Model):
 class Habitacion(models.Model):
     hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE)
     tipo_habitacion = models.ForeignKey(TipoDeHabitacion, on_delete=models.CASCADE)
-    numero = models.CharField(max_length=20)
+    numero = models.CharField(max_length=20, unique=True)
     # Elimina los campos fecha_disponible_inicio y fecha_disponible_fin
     disponible = models.BooleanField(default=True)  # Cambia esto a un campo booleano para disponibilidad
 

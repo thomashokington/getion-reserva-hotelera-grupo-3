@@ -130,3 +130,4 @@ def homepage(request):
 def detalle_habitacion(request, id_habitacion):
     habitacion = Habitacion.objects.get(id=id_habitacion)
     return render(request, 'detalle_habitacion.html', {'habitacion': habitacion})
+

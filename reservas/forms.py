@@ -58,3 +58,7 @@ class CustomUserCreationForm(UserCreationForm):
         # Elimina los mensajes de ayuda para las contraseñas
         self.fields['password1'].help_text = ''
         self.fields['password2'].help_text = ''
+
+
+
+        

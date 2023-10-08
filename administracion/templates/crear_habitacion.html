@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+
+    {{form}}
+
+    <button>
+        Crear Habitación
+    </button>
+    {{error}}
+</form>
+{% endblock %}

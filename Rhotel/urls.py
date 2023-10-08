@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('reservas/', include('reservas.urls')),  # Incluye las URL de la aplicación "reservas"
     path('', views.homepage, name='homepage'),
+    path('administracion/', include('administracion.urls')),
 ]

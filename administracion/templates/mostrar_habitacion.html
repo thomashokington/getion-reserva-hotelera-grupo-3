@@ -1,0 +1,35 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+{% block content %}
+<div class="container-fluid ">
+  <a href="javascript:history.go(-1);" class="btn btn-secondary mt-2">Retroceder</a>
+
+</div>
+<div class="row justify-content-md-center">
+  <div class="col-md-6">
+    <div class="bg-light py-4 px-3 text-center">
+      <h1>Habitaciones Disponibles</h1>
+      
+      {% for habitacion in habitaciones %}
+        <div class="col-md-4 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Habitación {{ habitacion.numero }}</h5>
+              <p class="card-text">
+                <strong>Capacidad:</strong> {{ habitacion.tipo_habitacion.capacidad }} personas<br>
+                <strong>Tipo:</strong> {{ habitacion.tipo_habitacion.nombre }}<br>
+                <strong>Fecha de Disponibilidad:</strong> {{ habitacion.tipo_habitacion.fecha_disponible|default:"Disponible" }}<br>
+                
+              </p>
+              <a href="{% url 'det_habitacion' hab_id=habitacion.numero %}" class="btn btn-primary">Ver</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+  
+{% endblock %}
