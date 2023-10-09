@@ -1,13 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Detalles de la Habitación {{ habitacion.numero }}</h1>
+  <h1 class="text-3xl py-4 font-bold">Detalles de la Habitación {{ habitacion.numero }}</h1>
   <p><strong>Capacidad:</strong> {{ habitacion.tipo_habitacion.capacidad }} personas</p>
   <p><strong>Tipo:</strong> {{ habitacion.tipo_habitacion.nombre }}</p>
-  <p><strong>Fecha de Disponibilidad:</strong> {{ habitacion.tipo_habitacion.fecha_disponible|default:"Disponible" }}</p>
+  <p class="pb-4"><strong>Fecha de Disponibilidad:</strong> {{ habitacion.tipo_habitacion.fecha_disponible|default:"Disponible" }}</p>
   
-  <!-- Agregar más detalles de la habitación aquí si es necesario -->
-
-  <a href="{% url 'crear_reserva' id_habitacion=habitacion.id%}" class="btn btn-primary">Reservar</a>
+  <a href="{% url 'crear_reserva' id_habitacion=habitacion.id%}" class="bg-blue-800 rounded text-white px-4 py-2 font-bold">Reservar</a>
      
 {% endblock %}

@@ -1,35 +1,41 @@
-
-{% extends "base.html" %}
-
-{% load static %}
-{% block content %}
-<div class="container-fluid ">
-  <a href="javascript:history.go(-1);" class="btn btn-secondary mt-2">Retroceder</a>
-
-</div>
-<div class="row justify-content-md-center">
-  <div class="col-md-6">
-    <div class="bg-light py-4 px-3 text-center">
-      <h1>Habitaciones</h1>
-      
-      {% for habitacion in habitaciones %}
-        <div class="col-md-4 mb-3 justify-content-md-center">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Habitación {{ habitacion.numero }}</h5>
+{% extends "adminbase.html" %} {% load static %} {% block content %}
+<div class="grid place-content-center  p-4">
+  <div class="bg-white rounded w-full p-4">
+    <div class="container-fluid">
+      <a
+        href="javascript:history.go(-1);"
+        class="bg-blue-400 rounded px-2 py-1 text-white"
+        >Retroceder</a
+      >
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="col-md-6">
+        <div class="bg-light py-4 px-3 left">
+          <h1 class="text-3xl font-bold py-4">Habitaciones</h1>
+          <div class="grid grid-cols-3 gap-4 overflow-y-scroll w-full">
+            {% for habitacion in habitaciones %}
+            <div
+              class="bg-white rounded w-[260px] border-blue-800 border flex flex-col gap-2 p-1"
+            >
+              <h5 class="font-bold">Habitación {{ habitacion.numero }}</h5>
               <p class="card-text">
-                <strong>Capacidad:</strong> {{ habitacion.tipo_habitacion.capacidad }} personas<br>
-                <strong>Tipo:</strong> {{ habitacion.tipo_habitacion.nombre }}<br>
-                <strong>Fecha de Disponibilidad:</strong> {{ habitacion.tipo_habitacion.fecha_disponible|default:"Disponible" }}<br>
-                
+                <strong>Capacidad: </strong>
+              </p> {{ habitacion.tipo_habitacion.capacidad }} personas<br />
+                <strong>Tipo: </strong>{{ habitacion.tipo_habitacion.nombre }}<br />
+                <strong>Fecha de Disponibilidad:</strong>
+                {{ habitacion.tipo_habitacion.fecha_disponible|default:"Disponible" }}<br />
               </p>
-              <a href="{% url 'det_habitacion' hab_id=habitacion.numero %}" class="btn btn-primary">Ver</a>
+              <a
+                href="{% url 'det_habitacion' hab_id=habitacion.numero %}"
+                class="bg-blue-800 rounded text-white px-4 py-2 font-bold"
+                >Ver</a
+              >
             </div>
+            {% endfor %}
           </div>
         </div>
-      {% endfor %}
+      </div>
     </div>
   </div>
 </div>
-  
 {% endblock %}

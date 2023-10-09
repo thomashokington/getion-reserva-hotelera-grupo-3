@@ -1,24 +1,28 @@
-{% extends "base.html" %}
+{% extends "adminbase.html" %}
 
 {% block content %}
+<div class="grid place-content-center h-full p-4">
 
-<div class="container-fluid ">
-  <a href="javascript:history.go(-1);" class="btn btn-secondary mt-2">Retroceder</a>
-
-</div>
-<div class="row justify-content-md-center">
+<div class="p-4 bg-gray-100 rounded shadow">
+  <div class="container-fluid ">
+    <a
+          href="javascript:history.go(-1);"
+          class="bg-blue-400 rounded px-2 py-1 text-white"
+          >Retroceder</a
+        >
+  </div>
   <div class="col-md-6">
-    <div class="bg-light py-4 px-3 text-center">
-      <h1>Detalles de la Habitación {{ habitacion.numero }}</h1>
-      <form action="" method="POST">
+    <div class="flex flex-col gap-4 text-lg">
+      <h1 class="text-2xl font-bold">Detalles de la Habitación {{ habitacion.numero }}</h1>
+      <form class="flex flex-col gap-4" method="POST">
         {% csrf_token %}
         {{form}}
-        <button>Actualizar</button>
+        <button class="bg-blue-800 text-white px-4 py-2 rounded">Actualizar</button>
       </form>
     </div>
   </div>
 </div>
-  
+</div>
   
   
      

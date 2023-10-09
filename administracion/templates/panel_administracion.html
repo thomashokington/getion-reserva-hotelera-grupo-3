@@ -1,17 +1,18 @@
-{% extends "base.html" %}
+{% extends "adminbase.html" %} {% block content %}
+<div class="w-full h-full grid place-content-center">
+  <div class="flex gap-8">
+    <a
+      class="text-xl font-bold bg-white rounded p-4 border-blue-800 border"
+      href="{% url 'crear_habitacion'  %}"
+      >Crear Habitacion</a
+    >
 
-{% block content %}
-<div class="container">
-    <div class="card">
-        <div class="card-body">
-            <a href="{% url 'crear_habitacion'  %}">Crear Habitacion</a>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-body">
-            <a href="{% url 'mostrar_habitacion'  %}">Actualizar habitaciones</a>
-        </div>
-    </div>
+    <a
+      class="bg-white rounded p-4 border-blue-800 border text-xl font-bold"
+      href="{% url 'mostrar_habitacion'  %}"
+      >Actualizar habitaciones</a
+    >
+  </div>
 </div>
 
 {% endblock %}

@@ -1,24 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Resultados de la Búsqueda</h1>
-  <div class="row">
+  <h1 class="text-3xl font-bold text-center py-4">Resultados de la Búsqueda</h1>
+  <div class="grid grid-cols-4 gap-2">
     {% if habitaciones %}
       {% for habitacion in habitaciones %}
-        <div class="col-md-4 mb-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Habitación {{ habitacion.numero }}</h5>
-              <p class="card-text">
+
+            <div class="border-blue-800 border rounded p-2">
+              <h5 class="text-xl font-bold">Habitación {{ habitacion.numero }}</h5>
+              <p class="card-text py-2">
                 <strong>Capacidad:</strong> {{ habitacion.tipo_habitacion.capacidad }} personas<br>
                 <strong>Tipo:</strong> {{ habitacion.tipo_habitacion.nombre }}<br>
                 <strong>Fecha de Disponibilidad:</strong> {{ habitacion.tipo_habitacion.fecha_disponible|default:"Disponible" }}<br>
-                
               </p>
-              <a href="{% url 'detalle_habitacion' id_habitacion=habitacion.id %}" class="btn btn-primary">Detalles</a>
+              <a href="{% url 'detalle_habitacion' id_habitacion=habitacion.id %}" class="bg-blue-700 text-white px-4 py-2 font-bold rounded">Detalles</a>
             </div>
-          </div>
-        </div>
+
       {% endfor %}
     {% else %}
       <p class="col-md-12">No se encontraron habitaciones disponibles con los criterios de búsqueda seleccionados.</p>

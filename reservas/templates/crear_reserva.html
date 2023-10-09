@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Crear Reserva para la Habitación {{ habitacion.numero }}</h1>
-    <form method="post">
+    <h1 class="text-3xl font-bold py-4">Crear Reserva para la Habitación {{ habitacion.numero }}</h1>
+    <form class="flex flex-col gap-4" method="post">
         {% csrf_token %}
         {{ form.fecha_entrada.label_tag }} {{ form.fecha_entrada }}
         {{ form.fecha_salida.label_tag }} {{ form.fecha_salida }}
         <input type="hidden" name="id_habitacion" value="{{ habitacion.id }}">
-        <input type="submit" value="Reservar">
+        <input type="submit" class="bg-blue-800 rounded text-white font-bold px-4 py-2" value="Reservar">
     </form>
 {% endblock %}

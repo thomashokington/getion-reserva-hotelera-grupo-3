@@ -1,16 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container-fluid">
-    
-
-    <div class="row justify-content-md-center">
-        
-        <div class="col-md-6 bg-light">
-            <a href="javascript:history.go(-1);" class="btn btn-secondary mt-2"><</a>
-            <div class="bg-light py-4 px-3 text-center">
-                <h1>Registrate</h1>
-                <form method="post">
+    <div class="row justify-content-md-center">    
+     <div class="flex flex-col justify-center items-center">
+            <div class="flex flex-col p-4">
+                <h1 class="text-3xl font-bold text-center py-4">¡Registrate!</h1>
+                <form class="flex flex-col gap-4 text-lg w-[600px]" method="post">
                     {% csrf_token %}
                     
                     {{ form.username.label_tag }}
@@ -41,11 +36,11 @@
                     {{ form.password2 }}
                     {{ form.password2.errors }}
                     
-                    <button class="btn btn-primary" type="submit">Registrarse</button>
+                    <button class="bg-blue-700 rounded text-white" type="submit">Registrarse</button>
                 </form>
                 <p>¿Ya tienes una cuenta? <a href="{% url 'inicio_sesion' %}" class="btn btn-link">Inicia sesión aquí</a></p>
             </div>
         </div>
-    </div>
+ 
 </div>
 {% endblock %}
